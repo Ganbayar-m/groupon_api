@@ -53,6 +53,7 @@ class Branch(models.Model):
     phone_number = models.IntegerField(verbose_name="Утасны дугаар")
     address = models.CharField(max_length=200, verbose_name="Хаяг")
     location = models.CharField(max_length=200, verbose_name="Байрлал")
+    description = models.CharField(max_length=200, verbose_name="Тайлбар")
     organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
     profile_image = models.ImageField(verbose_name="Салбарын profile зураг", upload_to="branch/profile_pictures")
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
@@ -123,14 +124,14 @@ class Product(models.Model):
 
 
 class Sale(models.Model):
-    start_date = models.DateField(verbose_name="Хямдрал эхэлсэн өдөр",)
-    finish_date = models.DateField(verbose_name="Хямдрал дуусах өдөр",)
+    start_date = models.DateTimeField(verbose_name="Хямдрал эхэлсэн өдөр",)
+    finish_date = models.DateTimeField(verbose_name="Хямдрал дуусах өдөр",)
     precent = models.FloatField(verbose_name="Хувь")
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     thumbnail = models.ImageField(verbose_name="Зураг", upload_to='sale/thumbnail')
     name = models.CharField(max_length=200,verbose_name='Нэр')
-    avatar = models.ImageField(verbose_name='Avatar', upload_to='sale/avatar', default='')
+    avatar = models.ImageField(verbose_name='Avatar', upload_to='sale/avatar', default='user/images/avatar-placeholder.png')
     price = models.CharField(max_length=200,verbose_name='Үнэ')
 
     def __str__(self):

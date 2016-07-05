@@ -52,15 +52,16 @@ def category(request):
             category_json = dict()
             category_json['name'] = category.name
             category_json['image'] =os.path.join(settings.MEDIA_URL, str(category.image))
+            categories_json.append(category_json)
+
             subcategories_json = []
             subcategories = SubCategory.objects.filter(parent=category)
-            print len(subcategories)
             for subcategory in subcategories:
                 subcategory_json = dict()
-                subcategory_json['name'] = subcategory.name
+                subcategory_json['subcategory_name'] = subcategory.name
                 subcategories_json.append(subcategory_json)
             category_json['subcategories'] = subcategories_json
-            categories_json.append(category_json)
+
         response['error'] = False
         response['Category'] = categories_json
 

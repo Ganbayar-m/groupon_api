@@ -34,6 +34,31 @@ def branch(request):
                 branchs_json.append(branch_json)
         response['error'] = False
         response['message'] = branchs_json
+
+    if command == 'details':
+        data = request_data.get('data')
+        branchs = Branch.objects.filter(id=data.get('id'))
+        branchs_json=[]
+        for branch in branchs:
+            branch_json = dict()
+            branch_json['phone_number'] = branch.phone_number
+            branch_json['address'] = branch.address
+            branch_json['location'] = branch.location
+            branch_json['profile_image'] = os.path.join(settings.MEDIA_URL, str(branch.profile_image))
+            branchs_json.append(branch_json)
+
+            products_json = []
+            products = Product.objects.filter(id=branch.product_id)
+            for product in products:
+                product_json = dict()
+                product_json['picture'] = product.picture
+                product_json['name'] = product.name
+                product_json['price'] = product.price
+                products_json.append(product_json)
+            branch_json['branchs']=products_json
+
+        response['error'] = False
+        response['Branch'] = branchs_json
     else:
         response['error'] = True
         response['message'] = 'Комманд олдсонгүй'

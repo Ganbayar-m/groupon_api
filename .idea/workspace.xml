@@ -32,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/groupon_models/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="103" column="6" selection-start-line="103" selection-start-column="6" selection-end-line="103" selection-end-column="6" />
+            <state relative-caret-position="227">
+              <caret line="55" column="72" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -45,10 +45,32 @@
         </entry>
       </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/organisation/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="138" column="71" selection-start-line="138" selection-start-column="69" selection-end-line="138" selection-end-column="71" />
+              <folding>
+                <element signature="e#22#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/branch/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="50" column="55" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/category/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="51" column="34" selection-start-line="47" selection-start-column="39" selection-end-line="51" selection-end-column="34" />
+            <state relative-caret-position="211">
+              <caret line="62" column="63" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="63" />
               <folding>
                 <element signature="e#13#24#0" expanded="true" />
               </folding>
@@ -57,22 +79,10 @@
         </entry>
       </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/organisation/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1381">
-              <caret line="72" column="29" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="29" />
-              <folding>
-                <element signature="e#22#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sale/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+            <state relative-caret-position="-350">
+              <caret line="79" column="29" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -100,7 +110,6 @@
         <option value="$PROJECT_DIR$/subcategory/urls.py" />
         <option value="$PROJECT_DIR$/subcategory/views.py" />
         <option value="$PROJECT_DIR$/branch/urls.py" />
-        <option value="$PROJECT_DIR$/branch/views.py" />
         <option value="$PROJECT_DIR$/user_register/admin.py" />
         <option value="$PROJECT_DIR$/product/views.py" />
         <option value="$PROJECT_DIR$/user_register/views.py" />
@@ -115,10 +124,11 @@
         <option value="$PROJECT_DIR$/answer/views.py" />
         <option value="$PROJECT_DIR$/question/views.py" />
         <option value="$PROJECT_DIR$/manage.py" />
-        <option value="$PROJECT_DIR$/organisation/views.py" />
-        <option value="$PROJECT_DIR$/groupon_models/models.py" />
-        <option value="$PROJECT_DIR$/category/views.py" />
         <option value="$PROJECT_DIR$/sale/views.py" />
+        <option value="$PROJECT_DIR$/organisation/views.py" />
+        <option value="$PROJECT_DIR$/category/views.py" />
+        <option value="$PROJECT_DIR$/branch/views.py" />
+        <option value="$PROJECT_DIR$/groupon_models/models.py" />
       </list>
     </option>
   </component>
@@ -226,7 +236,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="user_review" />
+              <option name="myItemId" value="product" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -240,21 +250,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groupon_api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groupon_api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="category" />
+              <option name="myItemId" value="branch" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -820,24 +816,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user_register/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="7" column="32" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/branch/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -913,7 +895,7 @@
         <state relative-caret-position="-23">
           <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
           <folding>
-            <element signature="e#13#24#0" expanded="true" />
+            <element signature="e#13#24#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -923,46 +905,62 @@
         <state relative-caret-position="446">
           <caret line="49" column="48" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="48" />
           <folding>
-            <element signature="e#13#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organisation/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1381">
-          <caret line="72" column="29" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="29" />
-          <folding>
-            <element signature="e#22#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/category/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="51" column="34" selection-start-line="47" selection-start-column="39" selection-end-line="51" selection-end-column="34" />
-          <folding>
-            <element signature="e#13#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/groupon_models/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="103" column="6" selection-start-line="103" selection-start-column="6" selection-end-line="103" selection-end-column="6" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#13#24#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sale/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+        <state relative-caret-position="-350">
+          <caret line="79" column="29" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organisation/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="138" column="71" selection-start-line="138" selection-start-column="69" selection-end-line="138" selection-end-column="71" />
+          <folding>
+            <element signature="e#22#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="54" column="56" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/category/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="62" column="63" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="63" />
+          <folding>
+            <element signature="e#13#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/branch/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="50" column="55" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/groupon_models/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="55" column="72" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

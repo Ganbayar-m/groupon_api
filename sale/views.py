@@ -81,7 +81,6 @@ def sale(request):
         data = request_data.get('data')
         sales = Sale.objects.all()
         sales_json = []
-        Product.objects.filter(subcategory_id=data.get('subcategory_id'))
         for sale in sales:
             sale_json = dict()
             sale_json['start_date'] = sale.start_date
@@ -99,30 +98,25 @@ def sale(request):
 
     elif command == 'view_follow':
         data = request_data.get('data')
-        organisations = []
         user = User.objects.get(id=data.get('user_id'))
+        sales_json = []
         for organisation in user.following_orginisations.all():
-            organisation_json = dict()
-            organisation_json['organisation_name'] = organisation.name
-            sales_json = []
             sales = Sale.objects.filter(branch__organisation=organisation)
             for sale in sales:
                 sale_json = dict()
                 sale_json['finish_date'] = sale.finish_date
                 sale_json['precent'] = sale.precent
+                sale_json['organisation_name'] = organisation.name
                 sale_json['id'] = sale.id
                 sale_json['thumbnail'] = os.path.join(settings.MEDIA_URL, str(sale.thumbnail))
                 sale_json['name'] = sale.name
                 sale_json['avatar'] = os.path.join(settings.MEDIA_URL, str(sale.avatar))
                 sale_json['price'] = sale.price
                 sale_json['subcategory_name'] = sale.product.subcategory.name
-
                 sales_json.append(sale_json)
-            organisation_json['sales'] = sales_json
-            organisations.append(organisation_json)
 
         response['error'] = False
-        response['organisatoins'] = organisations
+        response['sale'] = sales_json
 
     elif command == 'view_save':
         data = request_data.get('data')

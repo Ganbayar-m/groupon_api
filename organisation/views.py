@@ -144,6 +144,7 @@ def organisation(request):
                 branch_json['phone_number'] = branch.phone_number
                 branch_json['profile_image'] = os.path.join(settings.MEDIA_URL, str(branch.profile_image))
                 branch_json['sales'] = branch.sale_set.all().count()
+                branch_json['branch_id'] = branch.id
                 branchs_json.append(branch_json)
 
         organisation_json['branchs'] = branchs_json
