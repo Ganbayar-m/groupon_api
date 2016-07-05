@@ -1,11 +1,13 @@
 #coding:utf8
 import json
+import os
 
+from django.conf import settings
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from groupon_models.models import Category
+from groupon_models.models import Category, SubCategory
 
 
 @api_view(['POST'])
@@ -42,6 +44,26 @@ def category(request):
             category.save()
             response['error'] = False
             response['message'] = 'Амжилттай шинэчлэгдлээ.'
+    elif command =='view':
+        data = request_data.get('data')
+        categories = Category.objects.all()
+        categories_json = []
+        for category in categories:
+            category_json = dict()
+            category_json['name'] = category.name
+            category_json['image'] =os.path.join(settings.MEDIA_URL, str(category.image))
+            subcategories_json = []
+            subcategories = SubCategory.objects.filter(parent=category)
+            print len(subcategories)
+            for subcategory in subcategories:
+                subcategory_json = dict()
+                subcategory_json['name'] = subcategory.name
+                subcategories_json.append(subcategory_json)
+            category_json['subcategories'] = subcategories_json
+            categories_json.append(category_json)
+        response['error'] = False
+        response['Category'] = categories_json
+
     elif command =='delete':
         data = request_data.get('data')
         category = Category.objects.get(id=data.get('id'))

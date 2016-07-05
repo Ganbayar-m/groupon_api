@@ -2,6 +2,7 @@
 import json
 import os
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 from django.conf import settings
@@ -103,31 +104,25 @@ def sale(request):
         for organisation in user.following_orginisations.all():
             organisation_json = dict()
             organisation_json['organisation_name'] = organisation.name
-
-            subcategories_json = []
-            product = Sale.objects.filter(product_id=data.get('product_id'))
-
-
             sales_json = []
             sales = Sale.objects.filter(branch__organisation=organisation)
             for sale in sales:
-              sale_json = dict()
-              sale_json['start_date'] = sale.start_date
-              sale_json['finish_date'] = sale.finish_date
-              sale_json['precent'] = sale.precent
-              sale_json['id'] = sale.id
-              sale_json['product_id'] = sale.product_id
-              sale_json['branch_id'] = sale.branch_id
-              sale_json['thumbnail'] = os.path.join(settings.MEDIA_URL, str(sale.thumbnail))
-              sale_json['name'] = sale.name
-              sale_json['avatar'] = os.path.join(settings.MEDIA_URL, str(sale.avatar))
-              sale_json['price'] = sale.price
-              sales_json.append(sale_json)
+                sale_json = dict()
+                sale_json['finish_date'] = sale.finish_date
+                sale_json['precent'] = sale.precent
+                sale_json['id'] = sale.id
+                sale_json['thumbnail'] = os.path.join(settings.MEDIA_URL, str(sale.thumbnail))
+                sale_json['name'] = sale.name
+                sale_json['avatar'] = os.path.join(settings.MEDIA_URL, str(sale.avatar))
+                sale_json['price'] = sale.price
+                sale_json['subcategory_name'] = sale.product.subcategory.name
+
+                sales_json.append(sale_json)
             organisation_json['sales'] = sales_json
             organisations.append(organisation_json)
 
         response['error'] = False
-        response['sales'] = organisations
+        response['organisatoins'] = organisations
 
     elif command == 'view_save':
         data = request_data.get('data')

@@ -71,6 +71,7 @@ class Branch(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=200, verbose_name="Ангилалын нэр")
+    image = models.ImageField(verbose_name='Ангилалын зураг', upload_to='category/images', null=True)
 
     def __str__(self):
         return '%s' % self.name
