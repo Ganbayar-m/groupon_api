@@ -77,6 +77,8 @@ def organisation(request):
             organisation_json['url'] = user_organisation.url
             organisation_json['cover'] = os.path.join(settings.MEDIA_URL, str(user_organisation.cover))
             organisation_json['profile_image'] = os.path.join(settings.MEDIA_URL, str(user_organisation.profile_image))
+            organisation_json['followers'] = user_organisation.following.all().count()
+            organisation_json['branch'] = user_organisation.branch_set.all().count()
             organisations_json.append(organisation_json)
 
         response['error'] = False

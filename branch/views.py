@@ -44,18 +44,20 @@ def branch(request):
             branch_json['phone_number'] = branch.phone_number
             branch_json['address'] = branch.address
             branch_json['location'] = branch.location
+            branch_json['description'] = branch.description
+            branch_json['url'] = branch.organisation.url
             branch_json['profile_image'] = os.path.join(settings.MEDIA_URL, str(branch.profile_image))
             branchs_json.append(branch_json)
 
             products_json = []
-            products = Product.objects.filter(id=branch.product_id)
+            products = Product.objects.filter(branch=branch)
             for product in products:
                 product_json = dict()
-                product_json['picture'] = product.picture
+                product_json['picture'] = os.path.join(settings.MEDIA_URL, str(product.picture))
                 product_json['name'] = product.name
                 product_json['price'] = product.price
                 products_json.append(product_json)
-            branch_json['branchs']=products_json
+            branch_json['products']=products_json
 
         response['error'] = False
         response['Branch'] = branchs_json

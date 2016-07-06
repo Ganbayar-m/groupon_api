@@ -110,13 +110,29 @@ def sale(request):
                 sale_json['id'] = sale.id
                 sale_json['thumbnail'] = os.path.join(settings.MEDIA_URL, str(sale.thumbnail))
                 sale_json['name'] = sale.name
-                sale_json['avatar'] = os.path.join(settings.MEDIA_URL, str(sale.avatar))
+                sale_json['avatar'] = os.path.join(settings.MEDIA_URL, str(organisation.profile_image))
                 sale_json['price'] = sale.price
                 sale_json['subcategory_name'] = sale.product.subcategory.name
                 sales_json.append(sale_json)
 
         response['error'] = False
         response['sale'] = sales_json
+    elif command =='nearby':
+        data = request_data.get('data')
+        nearbies_json = []
+        nearbies = Sale.objects.filter(branch__address=data.get('branch_address'))
+        for nearby in nearbies:
+            nearby_json = dict()
+            nearby_json['price'] = nearby.product.price
+            nearby_json['finish_date'] = nearby.finish_date
+            nearby_json['organisation_name'] = nearby.branch.organisation.name
+            nearby_json['subcategory_name'] = nearby.product.subcategory.name
+            nearby_json['product_name'] = nearby.product.name
+            nearby_json['picture'] = os.path.join(settings.MEDIA_URL, str(nearby.product.picture))
+            nearbies_json.append(nearby_json)
+
+        response['error'] = False
+        response['nearby'] = nearbies_json
 
     elif command == 'view_save':
         data = request_data.get('data')
