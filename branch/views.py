@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 import json
 import os
 
@@ -12,7 +12,6 @@ from groupon_models.models import Branch, Organisation, Product
 
 @api_view(['POST'])
 def branch(request):
-
     response = dict()
 
     print request.body
@@ -27,9 +26,9 @@ def branch(request):
             branchs = Branch.objects.filter(organisation_id=organisation)
             for branch in branchs:
                 branch_json = dict()
-                branch_json ['phone_number'] = branch.phone_number
-                branch_json ['address'] = branch.address
-                branch_json ['location'] = branch.location
+                branch_json['phone_number'] = branch.phone_number
+                branch_json['address'] = branch.address
+                branch_json['location'] = branch.location
                 branch_json['profile_image'] = os.path.join(settings.MEDIA_URL, str(branch.profile_image))
                 branchs_json.append(branch_json)
         response['error'] = False
@@ -37,30 +36,30 @@ def branch(request):
 
     if command == 'details':
         data = request_data.get('data')
-        branchs = Branch.objects.filter(id=data.get('id'))
-        branchs_json=[]
-        for branch in branchs:
-            branch_json = dict()
-            branch_json['phone_number'] = branch.phone_number
-            branch_json['address'] = branch.address
-            branch_json['location'] = branch.location
-            branch_json['description'] = branch.description
-            branch_json['url'] = branch.organisation.url
-            branch_json['profile_image'] = os.path.join(settings.MEDIA_URL, str(branch.profile_image))
-            branchs_json.append(branch_json)
+        branch = Branch.objects.get(id=data.get('id'))
+        branch_json = dict()
+        branch_json['phone_number'] = branch.phone_number
+        branch_json['address'] = branch.address
+        branch_json['location'] = branch.location
+        branch_json['description'] = branch.description
+        branch_json['url'] = branch.organisation.url
+        branch_json['name'] = branch.name
+        branch_json['profile_image'] = os.path.join(settings.MEDIA_URL, str(branch.profile_image))
+        branch_json['cover'] = os.path.join(settings.MEDIA_URL, str(branch.cover))
 
-            products_json = []
-            products = Product.objects.filter(branch=branch)
-            for product in products:
-                product_json = dict()
-                product_json['picture'] = os.path.join(settings.MEDIA_URL, str(product.picture))
-                product_json['name'] = product.name
-                product_json['price'] = product.price
-                products_json.append(product_json)
-            branch_json['products']=products_json
+        products = branch.product.all()
+
+        products_json = []
+        for product in products:
+            product_json = dict()
+            product_json['picture'] = os.path.join(settings.MEDIA_URL, str(product.picture))
+            product_json['name'] = product.name
+            product_json['price'] = product.price
+            products_json.append(product_json)
+        branch_json['products'] = products_json
 
         response['error'] = False
-        response['Branch'] = branchs_json
+        response['Branch'] = branch_json
     else:
         response['error'] = True
         response['message'] = 'Комманд олдсонгүй'

@@ -56,7 +56,8 @@ class Branch(models.Model):
     description = models.CharField(max_length=200, verbose_name="Тайлбар", null=True)
     organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
     profile_image = models.ImageField(verbose_name="Салбарын profile зураг", upload_to="branch/profile_pictures")
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    product = models.ManyToManyField('Product')
+    cover = models.ImageField(verbose_name='Cover', upload_to='branch/cover', null=True)
 
     def __str__(self):
         return '%s' % self.name

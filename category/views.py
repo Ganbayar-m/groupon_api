@@ -44,6 +44,7 @@ def category(request):
             category.save()
             response['error'] = False
             response['message'] = 'Амжилттай шинэчлэгдлээ.'
+
     elif command =='view':
         data = request_data.get('data')
         categories = Category.objects.all()

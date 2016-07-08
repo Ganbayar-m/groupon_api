@@ -59,9 +59,9 @@ def sale(request):
         response['error'] = False
         response['message'] = 'Амжилттай шинэчлэгдлээ.'
 
-    elif command == 'view':
+    elif command == 'sale_details':
         data = request_data.get('data')
-        sales = Sale.objects.filter()
+        sales = Sale.objects.filter(id=data.get('sale_id'))
         sales_json = []
         for sale in sales:
             sale_json = dict()
@@ -83,14 +83,15 @@ def sale(request):
         sales_json = []
         for sale in sales:
             sale_json = dict()
-            sale_json['start_date'] = sale.start_date
             sale_json['finish_date'] = sale.finish_date
-            sale_json['precent'] = sale.finish_date
+            sale_json['precent'] = sale.precent
+            sale_json['organisation_name'] = sale.branch.organisation.name
             sale_json['id'] = sale.id
-            sale_json['product_id'] = sale.product_id
-            sale_json['branch_id'] = sale.branch_id
             sale_json['thumbnail'] = os.path.join(settings.MEDIA_URL, str(sale.thumbnail))
             sale_json['name'] = sale.name
+            sale_json['avatar'] = os.path.join(settings.MEDIA_URL, str(sale.branch.organisation.profile_image))
+            sale_json['price'] = sale.price
+            sale_json['subcategory_name'] = sale.product.subcategory.name
             sales_json.append(sale_json)
 
         response['error'] = False
@@ -117,18 +118,22 @@ def sale(request):
 
         response['error'] = False
         response['sale'] = sales_json
-    elif command =='nearby':
+
+    elif command == 'nearby':
         data = request_data.get('data')
         nearbies_json = []
-        nearbies = Sale.objects.filter(branch__address=data.get('branch_address'))
+        nearbies = Sale.objects.filter(branch__address__contains=data.get('branch_address'))
         for nearby in nearbies:
             nearby_json = dict()
-            nearby_json['price'] = nearby.product.price
             nearby_json['finish_date'] = nearby.finish_date
+            nearby_json['precent'] = nearby.precent
             nearby_json['organisation_name'] = nearby.branch.organisation.name
+            nearby_json['id'] = nearby.id
+            nearby_json['thumbnail'] = os.path.join(settings.MEDIA_URL, str(nearby.thumbnail))
+            nearby_json['name'] = nearby.name
+            nearby_json['avatar'] = os.path.join(settings.MEDIA_URL, str(nearby.branch.organisation.profile_image))
+            nearby_json['price'] = nearby.price
             nearby_json['subcategory_name'] = nearby.product.subcategory.name
-            nearby_json['product_name'] = nearby.product.name
-            nearby_json['picture'] = os.path.join(settings.MEDIA_URL, str(nearby.product.picture))
             nearbies_json.append(nearby_json)
 
         response['error'] = False
@@ -137,20 +142,29 @@ def sale(request):
     elif command == 'view_save':
         data = request_data.get('data')
         sales_json = []
-        sales = User.objects.filter(user__save_sale_user_id=data.get('user_id'))
+        sales = User.objects.get(pk=data.get('user_id')).save_sale.all()
         for sale in sales:
             sale_json = dict()
-            sale_json['start_date'] = sale.start_date
             sale_json['finish_date'] = sale.finish_date
             sale_json['precent'] = sale.precent
+            sale_json['organisation_name'] = sale.branch.organisation.name
             sale_json['id'] = sale.id
-            sale_json['product_id'] = sale.product_id
-            sale_json['branch_id'] = sale.branch_id
             sale_json['thumbnail'] = os.path.join(settings.MEDIA_URL, str(sale.thumbnail))
             sale_json['name'] = sale.name
+            sale_json['avatar'] = os.path.join(settings.MEDIA_URL, str(sale.branch.organisation.profile_image))
+            sale_json['price'] = sale.price
+            sale_json['subcategory_name'] = sale.product.subcategory.name
             sales_json.append(sale_json)
         response['error'] = False
         response['sales'] = sales_json
+
+    elif command =='save_count':
+        data = request_data.get('data')
+        sales = User.objects.get(pk=data.get('user_id')).save_sale.all()
+        sale_json = dict()
+        sale_json['count'] = sales.count()
+        response['error'] = False
+        response['save'] = sale_json
 
     elif command == 'save':
         data = request_data.get('data')
